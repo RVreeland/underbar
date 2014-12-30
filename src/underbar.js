@@ -200,13 +200,16 @@
 
     var len = collection.length;
 
-    for (var i = 0; i < len; i++) {
-      accumulator = iterator(accumulator, i);
-    }
+    /*for (var i = 0; i < len; i++) {
+      accumulator = iterator(accumulator, collection[i]);
+    }*/
+
+    _.each(collection, function(item) {
+      accumulator = iterator(accumulator, item);
+    })
 
     return accumulator;
 
-    })
   };
 
   // Determine if the array or object contains a given value (using `===`).
