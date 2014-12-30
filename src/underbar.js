@@ -130,6 +130,17 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+
+    var uniqItems = [];
+
+    _.each(array, function(item) {
+      if (_.indexOf(uniqItems, item) === -1) {
+        uniqItems.push(item);
+      }
+    })
+
+    return uniqItems;
+
   };
 
 
