@@ -378,9 +378,26 @@
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
-  _.shuffle = function(array) {
-  };
 
+
+  _.shuffle = function(array) {
+    var getRandomInt = function (min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    var arrayCopy = array.slice();
+    var shuffledArray = [];       
+
+    var shuffleArr = function(arr) {
+      while (arr.length > 0) {
+        var index = getRandomInt(0, arr.length);
+        var spliced = arr.splice(index, 1)[0];
+        shuffledArray.push(spliced);
+      }
+      return arr === shuffledArray ? shuffleArr(arrayCopy) : shuffledArray; 
+    }
+
+    return shuffleArr(arrayCopy);
+  };
 
   /**
    * EXTRA CREDIT
@@ -435,3 +452,4 @@
   _.throttle = function(func, wait) {
   };
 }());
+2
